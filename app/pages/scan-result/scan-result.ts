@@ -1,4 +1,4 @@
-import {Page} from "ionic-angular";
+import {Page, NavController, NavParams} from "ionic-angular";
 
 @Page({
     templateUrl: "build/pages/scan-result/scan-result.page.html",
@@ -6,8 +6,11 @@ import {Page} from "ionic-angular";
 })
 
 export class ScanResultPage{
-    constructor(){
+  public scannedText: string;
+    constructor(private _params: NavParams){
     }
 
-
+    onPageLoaded() {
+      this.scannedText = this._params.get("scannedText");
+    }
 }

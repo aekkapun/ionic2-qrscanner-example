@@ -13,20 +13,17 @@ export class ScanPage {
   public scannedText: string;
   public buttonText: string;
   public loading: boolean;
-  private eventId: string;
-  public eventName: string;
+  private eventId: number;
+  public eventTitle: string;
 
   constructor(
     private _nav: NavController,
-    private _http: Http,
-    private _params: NavParams,
-    private _userService: UserService) {
-
+    private _params: NavParams) {
   }
 
   onPageLoaded() {
     this.eventId = this._params.get('eventId');
-    this.eventName = this._params.get('eventName');
+    this.eventTitle = this._params.get('eventTitle');
 
     this.buttonText = "Scan";
     this.loading = false;
@@ -45,14 +42,16 @@ export class ScanPage {
       }
       console.log("Scanned successfully!");
       console.log(barcodeData);
-      this.checkPass(barcodeData);
+      this.goToResult(barcodeData);
     }, (err) => {
       console.log(err);
     });
   }
 
-  private goToResult() {
-    this._nav.push(ScanResultPage);
+  private goToResult(barcodeData) {
+    this._nav.push(ScanResultPage, {
+      scannedText: barcodeData.text
+    });
   }
 
   private checkPass(data) {

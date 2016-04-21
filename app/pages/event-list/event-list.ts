@@ -1,26 +1,29 @@
 import {Page, NavController} from 'ionic-angular';
 
-import {UserService} from "../../services/user.service";
 import {ScanPage} from "../scan/scan";
 
 @Page({
   templateUrl: 'build/pages/event-list/event-list.page.html',
 })
 export class EventListPage {
-  public events: Object;
-  constructor(private _userService: UserService, private _nav: NavController) { }
+  public events: Array<{ id: number, title: string }>;
+  constructor(private _nav: NavController) { }
 
   onPageLoaded() {
     this.getEvents();
   }
 
   private getEvents() {
+    this.events = new Array<{ id: number, title: string }>();
+    for (var index = 0; index < 10; index++) {
+      this.events.push({ id: index, title: "Test" + index });
+    }
   }
 
-  public scanForRide(id: string, name: string) {
+  public scanForRide(id: number, title: string) {
     this._nav.push(ScanPage, {
-      eventName: name,
-      eventId: id
+      eventId: id,
+      eventTitle: title
     });
   }
 }
