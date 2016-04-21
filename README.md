@@ -21,4 +21,12 @@ _WINDOWS NOTICE_: For those who have a Windows machine, the `ionic platform add 
 
 _ANDROID NOTICE_: For those who would like to build on Android, just simply run `ionic platform add android` after `ionic state restore` finishes to add the platform.
 
+## Project Structure
 
+It provides also some extra components to give it a little flavor:
+- Login page template
+- Event list page in case more than one QR should be scanned.
+- Scan page template that scans a QRCode
+- Scan result page that displays the Barcode/QR result after scanning
+- Basic HTTP service to make API calls which comprises some helper methods
+- Basic User Service to handle logging-in and simulating sessions
