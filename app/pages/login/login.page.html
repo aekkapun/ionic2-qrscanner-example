@@ -1,0 +1,21 @@
+<ion-navbar *navbar>
+  <ion-title>
+    Login
+  </ion-title>
+</ion-navbar>
+
+<ion-content class="Login">
+  <form (submit)="login()">
+    <ion-list inset>
+      <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="username" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="password" required></ion-input>
+      </ion-item>
+      <button type="submit" class="button button-block">Sign In</button>
+    </ion-list>
+  </form>
+</ion-content>

@@ -1,0 +1,14 @@
+
+<ion-navbar *navbar>
+  <ion-title>
+    Events
+  </ion-title>
+</ion-navbar>
+
+<ion-content class="EventList">
+  <ion-list>
+    <ion-item *ngFor="#event of events" (click)="scanForRide(event.id, event.title)">
+      {{event.title}}
+    </ion-item>
+  </ion-list>
+</ion-content>
